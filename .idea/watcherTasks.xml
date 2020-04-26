@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ProjectTasksOptions" suppressed-tasks="Less">
     <TaskOptions isEnabled="true">
-      <option name="arguments" value="$FileName$ $FileNameWithoutExtension$.css --source-map" />
+      <option name="arguments" value="--no-cache --update --sourcemap=none $FileName$:$FileNameWithoutExtension$.css" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />
       <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="scss" />
       <option name="immediateSync" value="true" />
       <option name="name" value="Scss" />
-      <option name="output" value="$FileNameWithoutExtension$.css:$FileNameWithoutExtension$.css.map" />
+      <option name="output" value="$FileNameWithoutExtension$.css" />
       <option name="outputFilters">
         <array>
           <FilterInfo>
