@@ -24,30 +24,6 @@ function ale_get_options() {
         'custom' => esc_html__('Custom','olins')
     );
 
-    $design_variant = array(
-        //'ikea' => esc_html__('Olins Ikea','olins'),
-        'blackwhite' => esc_html__('Olins Black & White','olins'),
-        'zoo' => esc_html__('Olins Zoo','olins'),
-        'bakery' => esc_html__('Olins Bakery','olins'),
-        'photography' => esc_html__('Olins Photography','olins'),
-        'luxuryshoes' => esc_html__('Olins Luxury Shoes','olins'),
-        'camping' => esc_html__('Olins Camping','olins'),
-        'travelphoto' => esc_html__('Olins Travel Photography','olins'),
-        'viaje' => esc_html__('Olins Viaje','olins'),
-        'wedding' => esc_html__('Olins Wedding','olins'),
-        'furniture' => esc_html__('Olins Furniture','olins'),
-        'magazine' => esc_html__('Olins Magazine','olins'),
-        'creative' => esc_html__('Olins Creative','olins'),
-        'brigitte' => esc_html__('Olins Photography Brigitte','olins'),
-        'corporate' => esc_html__('Olins Corporate','olins'),
-        'cv' => esc_html__('Olins CV','olins'),
-        'fashion' => esc_html__('Olins Fashion Store','olins'),
-        'pastel' => esc_html__('Olins Pastel Photography','olins'),
-        'stephanie' => esc_html__('Olins Stephanie Lark (Wedding)','olins'),
-        'cameron' => esc_html__('Olins Cameron','olins'),
-        'pixel' => esc_html__('Olins Pixel','olins'),
-        'jade' => esc_html__('Olins Jade','olins'),
-    );
     $yes_no = array(
         'no' => esc_html__('No. Use Default Styles','olins'),
         'yes' => esc_html__('Yes, Overwrite with Custom','olins')
@@ -341,75 +317,62 @@ function ale_get_options() {
     $options[] = array( "name" => esc_html__("Typography","olins"),
                         "type" => "heading",
                         "icon" => "fa-font");
+//Alex_Fonts
 
     $options[] = array( "name" => esc_html__("Select the First Font from Google Library","olins"),
-                        "desc" => esc_html__("The default Font is - Raleway","olins"),
+                        "desc" => esc_html__("The default Font is - Roboto","olins"),
                         "id" => "ale_font_one",
-                        "std" => "Raleway",
+                        "std" => "Roboto",
                         "type" => "select",
                         "options" => $headerfont);
 
     $options[] = array( "name" => esc_html__("Select the First Font Properties from Google Library","olins"),
-                        "desc" => esc_html__("The default Font (extended) is - 400,400i,600,800,800i,900","olins"),
+                        "desc" => esc_html__("The default Font (extended) is - 200,300,400,900","olins"),
                         "id" => "ale_font_one_ex",
-                        "std" => "400,400i,600,800,800i,900",
-                        "type" => "text",
-                        );
-
-    $options[] = array( "name" => esc_html__("Select the Second Font from Google Library","olins"),
-                        "desc" => esc_html__("The default Font is - Playfair Display","olins"),
-                        "id" => "ale_font_two",
-                        "std" => "Playfair+Display",
-                        "type" => "select",
-                        "options" => $headerfont);
-
-    $options[] = array( "name" => esc_html__("Select the Second Font Properties from Google Library","olins"),
-                        "desc" => esc_html__("The default Font (extended) is - 400i","olins"),
-                        "id" => "ale_font_two_ex",
-                        "std" => "400i",
+                        "std" => "200,300,400,900",
                         "type" => "text",
                         );
 
     $options[] = array( 'name' => esc_html__("H1 Style","olins"),
                         'desc' => esc_html__("Change the h1 style","olins"),
                         'id' => 'ale_h1sty',
-                        'std' => array('size' => '32px','face' => 'Raleway','style' => 'italic','transform'=>'none', 'weight'=>'900','lineheight'=>'normal','color' => '#898989'),
+                        'std' => array('size' => '32px','face' => 'Roboto','style' => 'normal','transform'=>'uppercase', 'weight'=>'400','lineheight'=>'normal','color' => '#000000'),
                         'type' => 'typography');
 
-    $options[] = array( 'name' => esc_html__("H2 Style","olins"),
+/*    $options[] = array( 'name' => esc_html__("H2 Style","olins"),
                         'desc' => esc_html__("Change the h2 style","olins"),
                         'id' => 'ale_h2sty',
-                        'std' => array('size' => '28px','face' => 'Raleway','style' => 'italic','transform'=>'none', 'weight'=>'900','lineheight'=>'normal','color' => '#898989'),
+                        'std' => array('size' => '28px','face' => 'Raleway','style' => 'normal','transform'=>'none', 'weight'=>'400','lineheight'=>'normal','color' => '#000000'),
                         'type' => 'typography');
 
     $options[] = array( 'name' => esc_html__("H3 Style","olins"),
                         'desc' => esc_html__("Change the h3 style","olins"),
                         'id' => 'ale_h3sty',
-                        'std' => array('size' => '24px','face' => 'Raleway','style' => 'italic','transform'=>'none', 'weight'=>'900','lineheight'=>'normal','color' => '#898989'),
+                        'std' => array('size' => '24px','face' => 'Raleway','style' => 'normal','transform'=>'none', 'weight'=>'900','lineheight'=>'normal','color' => '#000000'),
                         'type' => 'typography');
 
     $options[] = array( 'name' => esc_html__("H4 Style","olins"),
                         'desc' => esc_html__("Change the h4 style","olins"),
                         'id' => 'ale_h4sty',
-                        'std' => array('size' => '20px','face' => 'Raleway','style' => 'italic','transform'=>'none', 'weight'=>'900','lineheight'=>'normal','color' => '#898989'),
+                        'std' => array('size' => '20px','face' => 'Raleway','style' => 'normal','transform'=>'none', 'weight'=>'900','lineheight'=>'normal','color' => '#000000'),
                         'type' => 'typography');
 
     $options[] = array( 'name' => esc_html__("H5 Style","olins"),
                         'desc' => esc_html__("Change the h5 style","olins"),
                         'id' => 'ale_h5sty',
-                        'std' => array('size' => '16px','face' => 'Raleway','style' => 'italic','transform'=>'none', 'weight'=>'900','lineheight'=>'normal','color' => '#898989'),
+                        'std' => array('size' => '16px','face' => 'Raleway','style' => 'normal','transform'=>'none', 'weight'=>'900','lineheight'=>'normal','color' => '#000000'),
                         'type' => 'typography');
 
     $options[] = array( 'name' => esc_html__("H6 Style","olins"),
                         'desc' => esc_html__("Change the h6 style","olins"),
                         'id' => 'ale_h6sty',
-                        'std' => array('size' => '14px','face' => 'Raleway','style' => 'italic','transform'=>'none', 'weight'=>'900','lineheight'=>'normal','color' => '#898989'),
-                        'type' => 'typography');
+                        'std' => array('size' => '14px','face' => 'Raleway','style' => 'normal','transform'=>'none', 'weight'=>'900','lineheight'=>'normal','color' => '#000000'),
+                        'type' => 'typography');*/
 
     $options[] = array( 'name' => esc_html__("Body Style","olins"),
                         'desc' => esc_html__("Change the body font style","olins"),
                         'id' => 'ale_bodystyle',
-                        'std' => array('size' => '14px','face' => 'Raleway','style' => 'normal','transform'=>'none', 'weight'=>'400','lineheight'=>'24px','color' => '#898989'),
+                        'std' => array('size' => '14px','face' => 'Roboto','style' => 'normal','transform'=>'none', 'weight'=>'300','lineheight'=>'24px','color' => '#000000'),
                         'type' => 'typography');
 
 	$options[] = array( "name" => esc_html__("Social Profiles & Share","olins"),
@@ -1046,163 +1009,42 @@ function ale_metaboxes($meta_boxes) {
 
     $meta_boxes[] = array(
         'id'         => 'title_heading_metabox',
-        'title'      => esc_html__('Title Heading Styles','olins'),
-        'pages'      => array( 'page', 'post', 'works' ), // Post type
+        'title'      => esc_html__('Title About Us Styles','olins'),
+        'pages'      => array( 'page' ), // Post type
         'context'    => 'normal',
         'priority'   => 'high',
+        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-about.php'),),
         'show_names' => true, // Show field names on the left
         'fields' => array(
             array(
-                'name' => esc_html__('Page Heading Mask?','olins'),
-                'desc' => esc_html__('Enable or disable the mask on page heading images background (if it supports)','olins'),
-                'id'   => $prefix . 'maskonheading',
-                'std'  => 'disable',
-                'type'    => 'select',
-                'options' => array(
-                    array( 'name' => esc_html__('Disable Mask','olins'), 'value' => 'disable', ),
-                    array( 'name' => esc_html__('Black & White','olins'), 'value' => 'blackwhite', ),
-                    array( 'name' => esc_html__('Dark 40% Opacity','olins'), 'value' => 'black_40', ),
-                    array( 'name' => esc_html__('Black 40% Opacity','olins'), 'value' => 'negru_40', ),
-                ),
+                'name' => esc_html__('Загрузи своё фото','olins'),
+                'desc' => esc_html__('Загрузи своё фото.','olins'),
+                'id'   => $prefix . 'download_photo',
+                'type'    => 'file',
             ),
             array(
-                'name' => esc_html__('Featured Image Size - Cover.','olins'),
-                'desc' => esc_html__('Check this field to make the featured image size cover in the page heading.','olins'),
-                'id'   => $prefix . 'featuredimagecover',
-                'type'    => 'checkbox',
-            ),
-            array(
-                'name' => esc_html__('Post Pre Title','olins'),
-                'desc' => esc_html__('Insert the Pre Title','olins'),
-                'id'   => $prefix . 'post_pre_title',
+                'name' => esc_html__('Заголовок блока','olins'),
+                'desc' => esc_html__('Введи заголовок блока','olins'),
+                'id'   => $prefix . 'sub_title_one',
                 'type'    => 'text',
             ),
             array(
-                'name' => esc_html__('Title and Pre Title Position','olins'),
-                'desc' => esc_html__('Specify the position for the Title and Pre Title','olins'),
-                'id'   => $prefix . 'post_title_position',
-                'std'  => '',
-                'type'    => 'select',
-                'options' => array(
-                    array( 'name' => esc_html__('After the Page Heading','olins'), 'value' => 'afterheading', ),
-                    array( 'name' => esc_html__('Into the Page Heading','olins'), 'value' => 'onheadingfeatured', ),
-                    array( 'name' => esc_html__('After the Page Heading. Show Default in Heading','olins'), 'value' => 'afterheadingwithdefaults', ),
-                    array( 'name' => esc_html__('After Thumb/Slider. Show Default in Heading','olins'), 'value' => 'afterfeaturedimage', ),
-                    array( 'name' => esc_html__('After Heading. Make Heading full width. Used on Wedding Variant.','olins'), 'value' => 'fullwidthwedding', ),
-                    array( 'name' => esc_html__('Do not show','olins'), 'value' => 'disable', ),
-                ),
-            ),
-            array(
-                'name' => esc_html__('Featured Image Position','olins'),
-                'desc' => esc_html__('Specify the position for the Featured Image','olins'),
-                'id'   => $prefix . 'featured_position',
-                'std'  => '',
-                'type'    => 'select',
-                'options' => array(
-                    array( 'name' => esc_html__('In Page Headings as background (if it supports)','olins'), 'value' => 'in_heading', ),
-                    array( 'name' => esc_html__('In Content Area','olins'), 'value' => 'in_content', ),
-                    array( 'name' => esc_html__('Do not display','olins'), 'value' => 'no', ),
-                ),
-            ),
-            array(
-                'name' => esc_html__('Sidebar Position','olins'),
-                'desc' => esc_html__('Specify a sidebar position','olins'),
-                'id'   => $prefix . 'sidebar_position',
-                'std'  => 'no',
-                'type'    => 'select',
-                'options' => array(
-                    array( 'name' => esc_html__('No Sidebar','olins'), 'value' => 'no', ),
-                    array( 'name' => esc_html__('1/3 Left','olins'), 'value' => 'left_third', ),
-                    array( 'name' => esc_html__('1/4 Left','olins'), 'value' => 'left_fourth', ),
-                    array( 'name' => esc_html__('1/3 Right','olins'), 'value' => 'right_third', ),
-                    array( 'name' => esc_html__('1/4 Right','olins'), 'value' => 'right_fourth', ),
-                ),
-            ),
-        )
-    );
-
-    $meta_boxes[] = array(
-        'id'         => 'posts_metabox',
-        'title'      => esc_html__('Posts Settings','olins'),
-        'pages'      => array( 'post', 'works' ), // Post type
-        'context'    => 'normal',
-        'priority'   => 'high',
-        'show_names' => true, // Show field names on the left
-        'fields' => array(
-
-            array(
-                'name' => esc_html__('Post Info Line Position','olins'),
-                'desc' => esc_html__('Select a position for the post info line.','olins'),
-                'id'   => $prefix . 'post_info_line',
-                'type'    => 'select',
-                'options' => array(
-                    array( 'name' => esc_html__('Before Content','olins'), 'value' => 'before_content', ),
-                    array( 'name' => esc_html__('After Content','olins'), 'value' => 'after_content', ),
-                    array( 'name' => esc_html__('Hide Info Line, Show Grid Line','olins'), 'value' => 'grid_line', ),
-                    array( 'name' => esc_html__('Right Column','olins'), 'value' => 'right_column', ),
-                    array( 'name' => esc_html__('Hide Info Line, Show Thumbs Line (for Wedding Variant)','olins'), 'value' => 'thumbs_line', ),
-                    array( 'name' => esc_html__('Disable Info Line','olins'), 'value' => 'disable', ),
-                ),
-            ),
-            array(
-                'name' => esc_html__('Author Info','olins'),
-                'desc' => esc_html__('Enable or disable the author info box before the content','olins'),
-                'id'   => $prefix . 'author_info',
-                'std'  => 'disable',
-                'type'    => 'select',
-                'options' => array(
-                    array( 'name' => esc_html__('Disable Author Info Block','olins'), 'value' => 'disable', ),
-                    array( 'name' => esc_html__('Enable Author Info Block','olins'), 'value' => 'enable', ),
-                ),
-            ),
-            array(
-                'name' => esc_html__('Related posts','olins'),
-                'desc' => esc_html__('Show or hide the related posts block?','olins'),
-                'id'   => $prefix . 'related_posts',
-                'std'  => 'disable',
-                'type'    => 'select',
-                'options' => array(
-                    array( 'name' => esc_html__('Hide Related Posts','olins'), 'value' => 'disable', ),
-                    array( 'name' => esc_html__('Show Related Posts (Random)','olins'), 'value' => 'enable', ),
-                ),
-            ),
-            array(
-                'name' => esc_html__('Related Posts Block Title','olins'),
-                'desc' => esc_html__('Insert the Title','olins'),
-                'id'   => $prefix . 'related_posts_title',
+                'name' => esc_html__('Заголовок блока','olins'),
+                'desc' => esc_html__('Введи заголовок блока','olins'),
+                'id'   => $prefix . 'sub_title_two',
                 'type'    => 'text',
             ),
-
             array(
-                'name' => esc_html__('Related Posts Count','olins'),
-                'desc' => esc_html__('Insert the count number','olins'),
-                'id'   => $prefix . 'related_posts_count',
-                'type'    => 'text',
+                'name' => esc_html__('Загрузи крутую картинку про фриланс','olins'),
+                'desc' => esc_html__('Загрузи картинку.','olins'),
+                'id'   => $prefix . 'download_freelance',
+                'type'    => 'file',
             ),
-        )
-    );
-
-    $meta_boxes[] = array(
-        'id'         => 'works_metabox',
-        'title'      => esc_html__('Works Settings','olins'),
-        'pages'      => array( 'works' ), // Post type
-        'context'    => 'normal',
-        'priority'   => 'high',
-        'show_names' => true, // Show field names on the left
-        'fields' => array(
-
             array(
-                'name' => esc_html__('Gallery Slider Type','olins'),
-                'desc' => esc_html__('Select a variant for the Gallery Slider','olins'),
-                'id'   => $prefix . 'gallery_slider',
-                'type'    => 'select',
-                'options' => array(
-                    array( 'name' => esc_html__('Slider Before Content','olins'), 'value' => 'before_content', ),
-                    array( 'name' => esc_html__('Top Info, Full Width Slider','olins'), 'value' => 'top_full', ),
-                    array( 'name' => esc_html__('Thumbnails Grid','olins'), 'value' => 'thumbs_grid', ),
-                    array( 'name' => esc_html__('Creative Grid','olins'), 'value' => 'creative_grid', ),
-                    array( 'name' => esc_html__('Brigitte Slider','olins'), 'value' => 'brigitte_slider', ),
-                ),
+                'name' => esc_html__('Текст про фриланс','olins'),
+                'desc' => esc_html__('Запиши пару строк про фриланс','olins'),
+                'id'   => $prefix . 'text_freelance',
+                'type'    => 'textarea',
             ),
         )
     );
