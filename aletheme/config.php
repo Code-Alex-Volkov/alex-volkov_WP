@@ -110,6 +110,9 @@ function ale_get_options() {
         'text-align' => '',
     );
 
+
+    /* Theme Options */
+
 	
 	$imagepath =  ALETHEME_URL . '/assets/images/';
 	
@@ -119,147 +122,22 @@ function ale_get_options() {
                         "type" => "heading",
                         "icon" => "fa-desktop");
 
-    $options[] = array( "name" => esc_html__("Site Logo","olins"),
-                        "desc" => esc_html__("Upload or put the site logo link.","olins"),
+    $options[] = array( "name" => esc_html__("Логотип сайта","olins"),
+                        "desc" => esc_html__("Загрузи логотип","olins"),
                         "id" => "ale_sitelogo",
                         "std" => "",
                         "type" => "upload");
 
-    $options[] = array( "name" => esc_html__("Footer Logo","olins"),
-                        "desc" => esc_html__("Upload or put the footer logo link.","olins"),
-                        "id" => "ale_footerlogo",
-                        "std" => "",
-                        "type" => "upload");
-
-    $options[] = array( "name" => esc_html__("Uplaod a favicon icon","olins"),
-                        "desc" => esc_html__("Upload or put the link of your favicon icon","olins"),
+    $options[] = array( "name" => esc_html__("Favicon icon","olins"),
+                        "desc" => esc_html__("Загрузи favicon icon","olins"),
                         "id" => "ale_favicon",
                         "std" => "",
                         "type" => "upload");
-		
-	$options[] = array("name" => esc_html__("Style","olins"),
-						"type" => "heading",
-                        "icon" => "fa-window-restore");
-
-    $options[] = array( "name" => esc_html__("Design","olins"),
-                        "desc" => esc_html__("Specify the design. Each Design variant will load the own overall style, the header and the footer are hardcoded and are unique for specific variant.","olins"),
-                        "id" => "ale_design_variant",
-                        "std" => "blackwhite",
-                        "type" => "select",
-                        "options" => $design_variant);
-
-    $options[] = array( "name" => esc_html__("Page Wrapper","olins"),
-                        "desc" => esc_html__("Specify the wrapper width. If you selected the Custom Wrapper, make sure you added the custom value in the field below.","olins"),
-                        "id" => "ale_wrapper_width",
-                        "std" => "",
-                        "type" => "select",
-                        "options" => $wrapper_size);
-
-    $options[] = array( "name" => esc_html__("Custom Page Wrapper","olins"),
-                        "desc" => esc_html__("If you need a custom Wrapper width, add your value in that field. ex: 900px or 90%. Also make sure the previous field is selected Custom","olins"),
-                        "id" => "ale_custom_wrapper",
-                        "std" => "",
-                        "type" => "text");
-
-    $options[] = array( "name" => esc_html__("Inner Wrapper/Content Wrapper","olins"),
-                        "desc" => esc_html__("Specify the inner wrapper if it should be different then the default wrapper. Let the field empty to be equal to the default wrapper. Use \"px\" or \"%\".","olins"),
-                        "id" => "ale_inner_wrapper",
-                        "std" => "1000px",
-                        "type" => "text");
-
-    $options[] = array( 'name' => esc_html__("Manage Background","olins"),
-                        'desc' => esc_html__("Select the background color, or upload a custom background image. Default background is the #f5f5f5 color","olins"),
-                        'id' => 'ale_background',
-                        'std' => $background_defaults,
-                        'type' => 'background');
-
-    $options[] = array( "name" => esc_html__("Site Pre Loader","olins"),
-                        "desc" => esc_html__("Enable or Disable the site preloader","olins"),
-                        "id" => "ale_preloder",
-                        "std" => "disable",
-                        "type" => "select",
-                        "options" => array(
-                            'disable' => esc_html__('Disable','olins'),
-                            'enable' => esc_html__('Enable','olins')
-                        ));
-
-    $options[] = array( "name" => esc_html__("Pre loader Animation","olins"),
-                        "desc" => esc_html__("Select Pre Loader animation","olins"),
-                        "id" => "ale_preloder_style",
-                        "std" => "1",
-                        "type" => "select",
-                        "options" => array(
-                            '1' => esc_html__('Rotating Plane','olins'),
-                            '2' => esc_html__('Double Bounce','olins'),
-                            '3' => esc_html__('Wave','olins'),
-                            '4' => esc_html__('Wandering Cubes','olins'),
-                            '5' => esc_html__('Spinner','olins'),
-                            '6' => esc_html__('Chasing Dots','olins'),
-                            '7' => esc_html__('Three Bounce','olins'),
-                            '8' => esc_html__('Circle','olins'),
-                            '9' => esc_html__('Cube Grid','olins'),
-                            '10' => esc_html__('Fading Circle','olins'),
-                            '11' => esc_html__('Folding Cube','olins'),
-                        ));
-
-    $options[] = array( "name" => esc_html__("Background color","olins"),
-                        "desc" => esc_html__("Select a background color for Pre loader","olins"),
-                        "id" => "ale_loader_bg",
-                        "std" => "",
-                        "type" => "color");
-
-    $options[] = array( "name" => esc_html__("Animation color","olins"),
-                        "desc" => esc_html__("Select a color for Animation","olins"),
-                        "id" => "ale_loader_animation",
-                        "std" => "",
-                        "type" => "color");
-
-    $options[] = array("name" => esc_html__("Header Settings","olins"),
-                        "type" => "heading",
-                        "icon" => "fa-code");
-
-    $options[] = array( "name" => esc_html__("Overwrite Header Styles","olins"),
-                        "desc" => esc_html__("Select Yes if you want to customize the header styles like, bg color, navigation items sizes etc...","olins"),
-                        "id" => "ale_header_custom_styles",
-                        "std" => "no",
-                        "type" => "select",
-                        "options" => $yes_no);
-
-    $options[] = array( 'name' => esc_html__("Styles for the Header","olins"),
-                        'desc' => esc_html__("Fill all fields to create a custom Header Style. Let the fields empty to use the default styles.","olins"),
-                        'id' => 'ale_header_styles',
-                        'std' => $menu_styles,
-                        'type' => 'header_styles');
-
-    $options[] = array( 'name' => esc_html__("1st Level Menu Style","olins"),
-                        'desc' => esc_html__("Change the 1st Level Menu Style","olins"),
-                        'id' => 'ale_menu_first_level',
-                        'std' => array('size' => '18px','face' => 'Raleway','style' => 'normal','transform'=>'none', 'weight'=>'400','lineheight'=>'normal','padding'=>'10px','color' => '#111111'),
-                        'type' => 'typography');
-
-    $options[] = array( 'name' => esc_html__("2st Level Menu Style","olins"),
-                        'desc' => esc_html__("Change the 2st Level Menu Style","olins"),
-                        'id' => 'ale_menu_second_level',
-                        'std' => array('size' => '18px','face' => 'Raleway','style' => 'normal','transform'=>'none', 'weight'=>'400','lineheight'=>'normal','color' => '#111111'),
-                        'type' => 'typography');
-
-    $options[] = array( 'name' => esc_html__("3st Level Menu Style","olins"),
-                        'desc' => esc_html__("Change the 3st Level Menu Style","olins"),
-                        'id' => 'ale_menu_third_level',
-                        'std' => array('size' => '18px','face' => 'Raleway','style' => 'normal','transform'=>'none', 'weight'=>'400','lineheight'=>'normal','color' => '#111111'),
-                        'type' => 'typography');
 
 
     $options[] = array("name" => esc_html__("Footer Options","olins"),
                         "type" => "heading",
                         "icon" => "fa-copyright");
-
-    $options[] = array( "name" => esc_html__("Footer Type","olins"),
-                        "desc" => esc_html__("Specify the footer type/style.","olins"),
-                        "id" => "ale_footer_variant",
-                        "std" => "default",
-                        "type" => "select",
-                        "options" => $footer_variant);
 
     $options[] = array( "name" => esc_html__("Footer Call Number","olins"),
                         "desc" => esc_html__("Insert the call number","olins"),
@@ -267,57 +145,10 @@ function ale_get_options() {
                         "std" => "",
                         "type" => "text");
 
-    $options[] = array( "name" => esc_html__("Footer Email Address","olins"),
-                        "desc" => esc_html__("Insert the Email Address.","olins"),
-                        "id" => "ale_footer_email_address",
-                        "std" => "",
-                        "type" => "text");
-
-    $options[] = array( "name" => esc_html__("Your Address","olins"),
-                        "desc" => esc_html__("Insert the Address.","olins"),
-                        "id" => "ale_footer_address",
-                        "std" => "",
-                        "type" => "text");
-
-    $options[] = array( "name" => esc_html__("Copyrights","olins"),
-                        "desc" => esc_html__("Insert the Copyrights text","olins"),
-                        "id" => "ale_copyrights",
-                        "std" => "",
-                        "type" => "editor");
-
-    $options[] = array("name" => esc_html__("Page Heading","olins"),
-                        "type" => "heading",
-                        "icon" => "fa-header");
-
-    $options[] = array( "name" => esc_html__("Page Heading Style","olins"),
-                        "desc" => esc_html__("Select a style for page heading. NOTE: Specific Heading was designed and hard coded for a specific demo variant. So after you installed a demo example, do not change this field. It will broke the layout.","olins"),
-                        "id" => "ale_page_heading_style",
-                        "std" => "parallax_one",
-                        "type" => "select",
-                        "options" => $page_heading);
-
-    $options[] = array( "name" => esc_html__("Archive Pages Title Background","olins"),
-                        "desc" => esc_html__("Upload or put the image link. Necessary size: 1800px-590px","olins"),
-                        "id" => "ale_archivetitlebg",
-                        "std" => "",
-                        "type" => "upload");
-
-    $options[] = array( "name" => esc_html__("Blog Archive Page Title","olins"),
-                        "desc" => esc_html__("Specify the title for Blog archive page","olins"),
-                        "id" => "ale_archiveblogtitle",
-                        "std" => "our blog posts",
-                        "type" => "text");
-
-    $options[] = array( "name" => esc_html__("Blog Archive Page Pre Title","olins"),
-                        "desc" => esc_html__("Specify the pre title for Blog archive page","olins"),
-                        "id" => "ale_archiveblogpretitle",
-                        "std" => "take a look at",
-                        "type" => "text");
 
     $options[] = array( "name" => esc_html__("Typography","olins"),
                         "type" => "heading",
                         "icon" => "fa-font");
-//Alex_Fonts
 
     $options[] = array( "name" => esc_html__("Select the First Font from Google Library","olins"),
                         "desc" => esc_html__("The default Font is - Roboto","olins"),
@@ -375,7 +206,7 @@ function ale_get_options() {
                         'std' => array('size' => '14px','face' => 'Roboto','style' => 'normal','transform'=>'none', 'weight'=>'300','lineheight'=>'24px','color' => '#000000'),
                         'type' => 'typography');
 
-	$options[] = array( "name" => esc_html__("Social Profiles & Share","olins"),
+	$options[] = array( "name" => esc_html__("Social Profiles","olins"),
 						"type" => "heading",
                         "icon" => "fa-address-book");
 
@@ -471,23 +302,6 @@ function ale_get_options() {
 						"std" => "",
 						"type" => "checkbox");
 
-
-	
-	$options[] = array( "name" => esc_html__("Advanced Settings","olins"),
-						"type" => "heading",
-                        "icon" => "fa-cogs");
-	
-	$options[] = array( "name" => esc_html__("Footer Code","olins"),
-						"desc" => esc_html__("If you have anything else to add in the footer - please add it here.","olins"),
-						"id" => "ale_footer_info",
-						"std" => "",
-						"type" => "textarea");
-
-    $options[] = array( "name" => esc_html__("Custom CSS Styles","olins"),
-                        "desc" => esc_html__("You can add here your styles. ex. .boxclass { padding:10px; }","olins"),
-                        "id" => "ale_customcsscode",
-                        "std" => "",
-                        "type" => "textarea");
 
     $options[] = array("name" => esc_html__("Blog Settings","olins"),
                        "type" => "heading",
@@ -849,60 +663,6 @@ function ale_get_options() {
                             'enable' => esc_html__('Enable','olins')
                         ));
 
-    $options[] = array("name" => esc_html__("WooCommerce","olins"),
-                       "type" => "heading",
-                       "icon" => "fa-shopping-basket");
-
-    $options[] = array( "name" => esc_html__("WooCommerce Title Background","olins"),
-                        "desc" => esc_html__("Upload or put the image link. Necessary size: 1800px-590px","olins"),
-                        "id" => "ale_wootitlebg",
-                        "std" => "",
-                        "type" => "upload");
-
-    $options[] = array( "name" => esc_html__("WooCommerce Single Page Title Background","olins"),
-                        "desc" => esc_html__("Upload or put the image link. LEt the field empty to disable the heading on single shop page.","olins"),
-                        "id" => "ale_woosingletitlebg",
-                        "std" => "",
-                        "type" => "upload");
-
-    $options[] = array( "name" => esc_html__("WooCommerce Page Title","olins"),
-                        "desc" => esc_html__("Specify the title for WooCommerce pages","olins"),
-                        "id" => "ale_wooblogtitle",
-                        "std" => "items fo you",
-                        "type" => "text");
-
-    $options[] = array( "name" => esc_html__("WooCommerce Pre Title","olins"),
-                        "desc" => esc_html__("Specify the pre title for WooCommerce PAges","olins"),
-                        "id" => "ale_wooblogpretitle",
-                        "std" => "awesome, styled, special",
-                        "type" => "text");
-
-    $options[] = array( "name" => esc_html__("Columns Count","olins"),
-                        "desc" => esc_html__("Select the columns count for WooCommerce pages","olins"),
-                        "id" => "ale_woo_columns",
-                        "std" => "4",
-                        "type" => "select",
-                        "options" => $archive_columns);
-
-    $options[] = array( "name" => esc_html__("Sidebar Settings","olins"),
-                        "desc" => esc_html__("Select a sidebar position for WooCommerce Pages","olins"),
-                        "id" => "ale_woo_sidebar_position",
-                        "std" => "no",
-                        "type" => "select",
-                        "options" => $archive_sidebar);
-
-    $options[] = array( "name" => esc_html__("Shop Grid Style","olins"),
-                        "desc" => esc_html__("Specify the Grid Style","olins"),
-                        "id" => "ale_woo_grid_style",
-                        "std" => "default",
-                        "type" => "select",
-                        "options" => $woo_grid);
-
-    $options[] = array( "name" => esc_html__("Products per page","olins"),
-                        "desc" => esc_html__("Specify the products per page count. by default it is 8","olins"),
-                        "id" => "ale_products_per_page",
-                        "std" => "8",
-                        "type" => "text");
 
     $options[] = array("name" => esc_html__("Instagram Settings","olins"),
                        "type" => "heading",
@@ -948,47 +708,18 @@ function ale_get_options() {
                             'thumbnail' => esc_html__('Thumbnail','olins')
                         ));
 
-    $options[] = array("name" => esc_html__("Subscribe Settings","olins"),
+    $options[] = array("name" => esc_html__("Forms Settings","olins"),
                        "type" => "heading",
                        "icon" => "fa-envelope-o");
 
-    $options[] = array( 'name' => esc_html__("Subscribe Form works with specific Design Variants","olins"),
-                        'desc' => esc_html__("Note that the Subscribe form is shown on a specific design variant and not on all variants. If you want to have a subscribe form into your footer, you must select a design variant that support it. See the demo previews examples. You also need to install a subscribe plugin and paste the shortcode in the field bellow.","olins"),
-                        'id' => 'ale_subscribeinfo',
-                        'std' => "",
-                        'type' => 'info');
-
-    $options[] = array( "name" => esc_html__("Subscribe Title","olins"),
-                        "desc" => esc_html__("Type a Title for the subscribe Box","olins"),
-                        "id" => "ale_subscribe_title",
+    $options[] = array( "name" => esc_html__("Шорткод формы страницы Контакты","olins"),
+                        "desc" => esc_html__("Вставь шорткод формы (cf7)","olins"),
+                        "id" => "ale_form1_shortcode",
                         "std" => "",
                         "type" => "text");
-
-    $options[] = array( "name" => esc_html__("Form Shortcode","olins"),
-                        "desc" => esc_html__("Paste here the subscribe shortcode generated by a third-part plugin. It can be MailChimp for WP.","olins"),
-                        "id" => "ale_subscribe_shortcode",
-                        "std" => "",
-                        "type" => "text");
-
-    $options[] = array("name" => esc_html__("Google Maps","olins"),
-                       "type" => "heading",
-                       "icon" => "fa-map-marker");
-
-    $options[] = array( "name" => esc_html__("Google Maps API Key","olins"),
-                        "desc" => ale_wp_kses(__("Paste a Google Maps API Key. You can generate a key on the  <a href=\"https://console.developers.google.com/apis/\" target=\"_blank\">Google console.</a>","olins")),
-                        "id" => "ale_maps_api_key",
-                        "std" => "",
-                        "type" => "text");
-
-    $options[] = array( "name" => esc_html__("Custom Pin Icon","olins"),
-                        "desc" => esc_html__("Upload a Custom Pin Icon. Let it empty to use the default icon.","olins"),
-                        "id" => "ale_map_icon",
-                        "std" => "",
-                        "type" => "upload");
-
-    $options[] = array( "name" => esc_html__("Map Custom Style","olins"),
-                        "desc" => esc_html__("Paste here a custom style for your google map. You can use the snazzymaps.com to take a ready style. ","olins"),
-                        "id" => "ale_maps_style",
+    $options[] = array( "name" => esc_html__("Шорткод Popup","olins"),
+                        "desc" => esc_html__("Вставь шорткод формы (cf7)","olins"),
+                        "id" => "ale_form2_shortcode",
                         "std" => "",
                         "type" => "text");
 
@@ -1084,159 +815,6 @@ function ale_get_images_sizes() {
                 'width'     => 500,
                 'height'    => 660,
                 'crop'      => true,
-            ),
-        ),
-
-        'works' => array(
-            array(
-                'name'      => 'works-squareextrabig',
-                'width'     => 1200,
-                'height'    => 1200,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-squarebig',
-                'width'     => 900,
-                'height'    => 900,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-squarelarge',
-                'width'     => 700,
-                'height'    => 700,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-squaremedium',
-                'width'     => 600,
-                'height'    => 600,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-squaresmall',
-                'width'     => 400,
-                'height'    => 400,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-masonryextrabig',
-                'width'     => 1200,
-                'height'    => 9999,
-                'crop'      => false,
-            ),
-            array(
-                'name'      => 'works-masonrybig',
-                'width'     => 1000,
-                'height'    => 9999,
-                'crop'      => false,
-            ),
-            array(
-                'name'      => 'works-masonrylarge',
-                'width'     => 700,
-                'height'    => 9999,
-                'crop'      => false,
-            ),
-            array(
-                'name'      => 'works-masonrymedium',
-                'width'     => 600,
-                'height'    => 9999,
-                'crop'      => false,
-            ),
-            array(
-                'name'      => 'works-masonrysmall',
-                'width'     => 400,
-                'height'    => 9999,
-                'crop'      => false,
-            ),
-            array(
-                'name'      => 'works-gridextrabig',
-                'width'     => 1200,
-                'height'    => 900,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-gridbig',
-                'width'     => 900,
-                'height'    => 700,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-gridlarge',
-                'width'     => 700,
-                'height'    => 500,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-gridmedium',
-                'width'     => 600,
-                'height'    => 400,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-gridsmall',
-                'width'     => 400,
-                'height'    => 280,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-linesmall',
-                'width'     => 320,
-                'height'    => 280,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-linelarge',
-                'width'     => 640,
-                'height'    => 280,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-vertical',
-                'width'     => 410,
-                'height'    => 504,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-photobig',
-                'width'     => 512,
-                'height'    => 600,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-photosmall',
-                'width'     => 512,
-                'height'    => 300,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-viajemini',
-                'width'     => 512,
-                'height'    => 418,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-viajetin',
-                'width'     => 512,
-                'height'    => 835,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-viajebig',
-                'width'     => 1024,
-                'height'    => 835,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-viajehor',
-                'width'     => 1024,
-                'height'    => 418,
-                'crop'      => true,
-            ),
-            array(
-                'name'      => 'works-brigitte',
-                'width'     => 9999,
-                'height'    => 700,
-                'crop'      => false,
             ),
         ),
     );
