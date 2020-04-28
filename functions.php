@@ -1,27 +1,21 @@
 <?php
-/****************************************************************
- * DO NOT DELETE
- ****************************************************************/
-if ( get_stylesheet_directory() == get_template_directory() ) {
-	define('ALETHEME_PATH', get_template_directory() . '/aletheme');
-	define('ALETHEME_URL', get_template_directory_uri() . '/aletheme');
-}  else {
-    define('ALETHEME_PATH', get_theme_root() . '/olins/aletheme');
-    define('ALETHEME_URL', get_theme_root_uri() . '/olins/aletheme');
+
+add_action( 'after_setup_theme', 'theme_register_nav_menu');
+add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
+
+
+
+function theme_register_nav_menu() {
+    register_nav_menu('top', 'Меню сайта');
 }
 
-require_once ALETHEME_PATH . '/init.php';
+function theme_name_scripts() {
+    wp_enqueue_style( 'style-name', get_stylesheet_directory_uri() . '/assets/styles/main.min.css' );
+    wp_enqueue_script( 'vendor', get_template_directory_uri() . '/assets/scripts/vendors.bundle.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'works', get_template_directory_uri() . '/assets/scripts/works.bundle.js', array(), '1.0.0', true );
+}
 
-load_theme_textdomain( 'olins', get_template_directory() . '/lang' );
-$locale = get_locale();
-$locale_file = get_template_directory() . "/lang/$locale.php";
-if ( is_readable($locale_file) )
-    require_once($locale_file);
 
-/****************************************************************
- * You can add your functions here.
- * 
- * BE CAREFULL! Functions will dissapear after update.
- * If you want to add custom functions you should do manual
- * updates only.
- ****************************************************************/
+if( function_exists('acf_add_options_page')) {
+    acf_add_options_page();
+}

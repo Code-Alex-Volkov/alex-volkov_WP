@@ -1,5 +1,3 @@
-
-
 </div>
 <div class="right_box">
     <div class="menu">
@@ -30,6 +28,22 @@
         </div>
     </div>
 </div>
+
+<footer class="footer">
+    <div class="wrapper">
+        <?php
+        if ( have_rows('социальные_сети') ) {
+            while ( have_rows('социальные_сети') ) { the_row(); ?>
+                <div class="social_wrapper">
+                    <a href="<?php the_sub_field('ссылка_на_социальную_сеть'); ?>"><?php the_sub_field('тег_иконки'); ?></a>
+                </div>
+                <?php
+            }
+        }
+        ?>
+        <p><?php the_field('копирайт'); ?></p>
+    </div>
+</footer>
 
 <div class="popup">
     <!-- Само (белое) модальное окно -->
