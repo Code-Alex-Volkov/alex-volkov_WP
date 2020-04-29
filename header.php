@@ -4,21 +4,20 @@
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Alex-Volkov.ru</title>
     <?php wp_head(); ?>
 </head>
 <body>
 <div class="left_box">
     <div class="logo_box">
         <a href="<?php echo get_home_url(); ?>" class="logo">
-            <img src="<?php the_field('логотип'); ?>" alt="Logo">
+            <img src="<?php the_field('логотип', 'option'); ?>" alt="Logo">
         </a>
     </div>
     <?php
-    if ( have_rows('социальные_сети') ) {
-        while ( have_rows('социальные_сети') ) { the_row(); ?>
+    if ( have_rows('социальные_сети', 'option') ) {
+        while ( have_rows('социальные_сети', 'option') ) { the_row(); ?>
             <div class="social">
-                <a href="<?php the_sub_field('ссылка_на_социальную_сеть'); ?>"><?php the_sub_field('тег_иконки'); ?></a>
+                <a href="<?php the_sub_field('ссылка_на_социальную_сеть', 'option'); ?>"><?php the_sub_field('тег_иконки', 'option'); ?></a>
             </div>
             <?php
         }

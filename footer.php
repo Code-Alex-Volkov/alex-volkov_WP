@@ -1,6 +1,6 @@
 
 
-</div>
+</section>
 <div class="right_box">
     <div class="menu">
         <div class="nav_btn">
@@ -11,6 +11,7 @@
         <div class="site_nav_box">
             <?php
             wp_nav_menu( [
+                'theme_location'  => 'Menu',
                 'container'       => 'nav',
                 'container_class' => 'site_nav',
             ] );
@@ -18,9 +19,9 @@
             <div class="mobile_soc">
                 <ul>
                     <?php
-                    if ( have_rows('социальные_сети') ) {
-                        while ( have_rows('социальные_сети') ) { the_row(); ?>
-                            <li><a href="<?php the_sub_field('link_social'); ?>"><?php the_sub_field('тег_иконки'); ?></a></li>
+                    if ( have_rows('социальные_сети', 'option') ) {
+                        while ( have_rows('социальные_сети', 'option') ) { the_row(); ?>
+                            <li><a href="<?php the_sub_field('link_social', 'option'); ?>"><?php the_sub_field('тег_иконки', 'option'); ?></a></li>
                             <?php
                         }
                     }
@@ -41,7 +42,7 @@
             <div class="form_block_popup">
                 <?php echo do_shortcode( '[contact-form-7 id="63" title="Без названия"]' ); ?>
                 <span class="bottom_text">Я отвечу в течении 24 часов!</span>
-                <span class="ok_clik">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь <br> с <a href="#">политикой конфиденциальности</a>.</span>
+                <span class="ok_clik">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь <br> с <?php the_privacy_policy_link(); ?>.</span>
             </div>
         </div>
     </div>

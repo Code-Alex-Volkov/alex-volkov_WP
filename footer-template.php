@@ -16,9 +16,9 @@
             <div class="mobile_soc">
                 <ul>
                     <?php
-                    if ( have_rows('социальные_сети') ) {
-                        while ( have_rows('социальные_сети') ) { the_row(); ?>
-                            <li><a href="<?php the_sub_field('link_social'); ?>"><?php the_sub_field('тег_иконки'); ?></a></li>
+                    if ( have_rows('социальные_сети', 'option') ) {
+                        while ( have_rows('социальные_сети', 'option') ) { the_row(); ?>
+                            <li><a href="<?php the_sub_field('link_social', 'option'); ?>"><?php the_sub_field('тег_иконки', 'option'); ?></a></li>
                             <?php
                         }
                     }
@@ -31,17 +31,19 @@
 
 <footer class="footer">
     <div class="wrapper">
-        <?php
-        if ( have_rows('социальные_сети') ) {
-            while ( have_rows('социальные_сети') ) { the_row(); ?>
-                <div class="social_wrapper">
-                    <a href="<?php the_sub_field('ссылка_на_социальную_сеть'); ?>"><?php the_sub_field('тег_иконки'); ?></a>
-                </div>
+        <div class="social_wrapper">
+            <?php
+            if ( have_rows('социальные_сети', 'option') ) {
+                while ( have_rows('социальные_сети', 'option') ) { the_row(); ?>
+                    <div class="social">
+                        <a href="<?php the_sub_field('ссылка_на_социальную_сеть', 'option'); ?>"><?php the_sub_field('тег_иконки', 'option'); ?></a>
+                    </div>
                 <?php
+                }
             }
-        }
-        ?>
-        <p><?php the_field('копирайт'); ?></p>
+            ?>
+        </div>
+        <p><?php the_field('копирайт', 'option'); ?></p>
     </div>
 </footer>
 
@@ -55,7 +57,7 @@
             <div class="form_block_popup">
                 <?php echo do_shortcode( '[contact-form-7 id="63" title="Без названия"]' ); ?>
                 <span class="bottom_text">Я отвечу в течении 24 часов!</span>
-                <span class="ok_clik">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь <br> с <a href="#">политикой конфиденциальности</a>.</span>
+                <span class="ok_clik">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь <br> с <?php the_privacy_policy_link(); ?>.</span>
             </div>
         </div>
     </div>
