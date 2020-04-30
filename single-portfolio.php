@@ -1,40 +1,61 @@
 <?php get_header();?>
 
 
-    <div class="project_single">
+    <div class="project_blog">
         <div class="wrapper">
-            <div class="project_single_title">
-                <h1 class="title">Мои проекты</h1>
-                <span><a href="project.html">Категории <i class="fas fa-project-diagram"></i></a></span>
+            <div class="project_blog_title">
+                <h1 class="title_blog">Gypson</h1>
+
+                <span><?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' » '); ?></span>
             </div>
-            <div class="block_single">
-                <div class="left_single">
-                    <h2 class="title_single">Landing Page</h2>
-                    <p class="info_text_single">Landing Page, ещё называют целевая или посадочная страница. Это одностраничный сайт с формой заявки. Может быть коротким или достаточно длинным. Подходит для акций, спец.предложений или 1 - 4 товаров/услуг.</p>
-                    <div class="btn_clic">
-                        <a class="popup-btn" href="#">Заказать такой сайт</a>
+            <div class="block_blog">
+
+                <div class="btn_clic">
+                    <a href="http://alex-volkov.ru/gypson/">Перейти на сайт</a>
+                </div>
+                <div class="blog_box">
+                    <div class="left_blog">
+                        <p class="info_text_blog">Описание проделанной работы</p>
+                    </div>
+                    <div class="right_blog">
+                        <img src="assets/images/img_blog_1.png" alt="#">
                     </div>
                 </div>
-                <div class="right_single">
-                    <?php get_cat_name( 1 ) ?>
-
-                    <div class="block_project_single">
-                        <a href="project-blog.html">
-                            <div class="block_img">
-                                <img src="assets/images/img_project2.png" alt="#">
-                            </div>
-                            <div class="block_title_site">
-                                <span class="name_site">Название сайта</span>
-                                <span class="data_download">11 апреля 2020 г.</span>
-                            </div>
-                            <span class="overlay">
-									<i class="fas fa-link"></i>
-								</span>
-                        </a>
+                <div class="blog_box">
+                    <div class="left_blog">
+                        <p class="info_text_blog">Описание проделанной работы</p>
                     </div>
-
-
+                    <div class="right_blog">
+                        <img src="assets/images/img_blog_2.png" alt="#">
+                    </div>
                 </div>
+                <div class="blog_box">
+                    <div class="left_blog">
+                        <p class="info_text_blog">Описание проделанной работы</p>
+                    </div>
+                    <div class="right_blog">
+                        <img src="assets/images/img_blog_3.png" alt="#">
+                    </div>
+                </div>
+                <div class="blog_box">
+                    <div class="left_blog">
+                        <p class="info_text_blog">Описание проделанной работы</p>
+                    </div>
+                    <div class="right_blog">
+                        <img src="assets/images/img_blog_4.png" alt="#">
+                    </div>
+                </div>
+                <div class="blog_box">
+                    <div class="left_blog">
+                        <p class="info_text_blog">Описание проделанной работы</p>
+                    </div>
+                    <div class="right_blog">
+                        <img src="assets/images/img_blog_5.png" alt="#">
+                    </div>
+                </div>
+            </div>
+            <div class="btn_clic order">
+                <a class="popup-btn" href="#">Заказать такой сайт</a>
             </div>
         </div>
     </div>

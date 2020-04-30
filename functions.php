@@ -10,6 +10,7 @@ function theme_register_nav_menu() {
     add_theme_support( 'post-thumbnails', array( 'post', 'portfolio' ) );
     add_image_size('post_thumb', 560, 300, true);
     add_image_size('single_post_thumb', 1170, 600, true);
+    add_image_size('work_thumb_', 200, 220, true);
     // удаляет H2 из шаблона пагинации
     add_filter('navigation_markup_template', 'my_navigation_template', 10, 2 );
     function my_navigation_template( $template, $class ){
@@ -383,6 +384,8 @@ function theme_register_nav_menu() {
 
     }
 
+
+
 }
 
 add_action( 'init', 'register_post_types' );
@@ -411,26 +414,26 @@ function register_post_types(){
         'show_in_nav_menus'   => true, // зависит от public
         'show_in_menu'        => true, // показывать ли в меню адмнки
         'show_in_admin_bar'   => true, // зависит от show_in_menu
-        'show_in_rest'        => null, // добавить в REST API. C WP 4.7
+        'show_in_rest'        => true, // добавить в REST API. C WP 4.7
         'rest_base'           => null, // $post_type. C WP 4.7
         'menu_position'       => 4,
-        'menu_icon'           => null,
+        'menu_icon'           => 'dashicons-format-gallery',
         //'capability_type'   => 'post',
         //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
         //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
         'hierarchical'        => false,
         'supports'            => [ 'title', 'editor','thumbnail' ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-        'taxonomies'          => ['works'],
-        'has_archive'         => false,
+        'taxonomies'          => ['work'],
+        'has_archive'         => true,
         'rewrite'             => true,
-        'query_var'           => true,
+        'query_var'           => false,
     ] );
 }
 
 // хук для регистрации
 add_action( 'init', 'create_taxonomy' );
 function create_taxonomy(){
-    register_taxonomy( 'works', [ 'portfolio' ], [
+    register_taxonomy( 'work', [ 'portfolio' ], [
         'label'                 => '', // определяется параметром $labels->name
         'labels'                => [
             'name'              => 'Категория',
@@ -448,16 +451,18 @@ function create_taxonomy(){
         ],
         'description'           => 'Категории сайтов', // описание таксономии
         'public'                => true,
-        // 'publicly_queryable'    => null, // равен аргументу public
-        // 'show_in_nav_menus'     => true, // равен аргументу public
-        // 'show_ui'               => true, // равен аргументу public
-        // 'show_in_menu'          => true, // равен аргументу show_ui
-        // 'show_tagcloud'         => true, // равен аргументу show_ui
-        // 'show_in_quick_edit'    => null, // равен аргументу show_ui
+        'publicly_queryable'    => true, // равен аргументу public
+        'show_in_nav_menus'     => true, // равен аргументу public
+        'show_ui'               => true, // равен аргументу public
+        'show_in_menu'          => true, // равен аргументу show_ui
+        'show_tagcloud'         => true, // равен аргументу show_ui
+        'show_in_quick_edit'    => true, // равен аргументу show_ui
         'hierarchical'          => true,
 
     ] );
 }
+
+
 
 function theme_style() {
     wp_enqueue_style( 'style', get_stylesheet_directory_uri());

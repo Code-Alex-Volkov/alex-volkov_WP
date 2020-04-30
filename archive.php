@@ -1,47 +1,44 @@
 <?php get_header(); ?>
-<?php get_template_part('partials/page_heading');
 
-//Sidebar position based on theme options
-$ale_sidebar_position = ale_get_option('blog_sidebar_position');
-$sidebar_class = '';
-
-if($ale_sidebar_position){
-    $sidebar_class = 'sidebar_position_'. $ale_sidebar_position;
-}
-?>
-
-    <div class="content_wrapper blog_posts flex_container <?php  echo esc_attr($sidebar_class); ?> cf">
-
-        <?php if($ale_sidebar_position  !== 'no'){
-            get_sidebar();
-        } ?>
-        <!-- Content -->
-        <div class="story ale_blog_archive content cf">
-            <?php
-            //Columns Settings
-            $ale_blog_columns = ale_get_option('default_blog_columns');
-            $ale_columns_class = '';
-            if($ale_blog_columns){
-                $ale_columns_class = 'ale_blog_columns_'.$ale_blog_columns;
-            }
-            //Text Align Settings
-            $ale_blog_text_align = ale_get_option('default_blog_text_align');
-            $ale_text_align_class = '';
-            if($ale_blog_text_align){
-                $ale_text_align_class = 'ale_blog_text_align_'.$ale_blog_text_align;
-            }
-            ?>
-            <div class="grid <?php echo esc_attr($ale_columns_class)." ".esc_attr($ale_text_align_class); ?>">
-                <div class="grid-sizer"></div>
-                <div class="gutter-sizer"></div>
-                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                    <?php get_template_part('partials/postpreview' );?>
-                <?php endwhile; else: ?>
-                    <?php get_template_part('partials/notfound')?>
-                <?php endif; ?>
+    <div class="project_single">
+        <div class="wrapper">
+            <div class="project_single_title">
+                <span><?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' » '); ?></span>
             </div>
-            <?php get_template_part('partials/pagination'); ?>
-        </div>
+            <div class="block_single">
+                <div class="left_single">
+                    <h2 class="title_single"><?php wp_title('') ?></h2>
+                    <p class="info_text_single">Landing Page, ещё называют целевая или посадочная страница. Это одностраничный сайт с формой заявки. Может быть коротким или достаточно длинным. Подходит для акций, спец.предложений или 1 - 4 товаров/услуг.</p>
+                    <div class="btn_clic">
+                        <a class="popup-btn" href="#">Заказать такой сайт</a>
+                    </div>
+                </div>
+                <div class="right_single">
+                    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                        <div class="block_project_single">
+                            <a href="<?php echo get_permalink(); ?>">
+                                <div class="block_img">
+                                    <?php the_post_thumbnail('work_thumb_'); ?>
+                                </div>
+                                <div class="block_title_site">
+                                    <span class="name_site"><?php the_title() ?></span>
+                                    <span class="data_download"><?php the_time('F jS, Y') ?></span>
+                                </div>
+                                <span class="overlay">
+                            <i class="fas fa-link"></i>
+                        </span>
+                            </a>
+                        </div>
+                    <?php endwhile; ?>
+                        <?php the_posts_pagination([
+                            'prev_text'    => __('<i class="fa fa-angle-left"></i>'),
+                            'next_text'    => __('<i class="fa fa-angle-right"></i>'),
+                        ]); ?>
+                    <?php endif; ?>
 
+                </div>
+            </div>
+        </div>
     </div>
+
 <?php get_footer(); ?>
