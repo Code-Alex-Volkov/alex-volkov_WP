@@ -4,55 +4,26 @@
     <div class="project_blog">
         <div class="wrapper">
             <div class="project_blog_title">
-                <h1 class="title_blog">Gypson</h1>
+                <div class="title_blog"><?php the_title() ?></div>
 
                 <span><?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' » '); ?></span>
             </div>
+
             <div class="block_blog">
 
-                <div class="btn_clic">
-                    <a href="http://alex-volkov.ru/gypson/">Перейти на сайт</a>
-                </div>
-                <div class="blog_box">
-                    <div class="left_blog">
-                        <p class="info_text_blog">Описание проделанной работы</p>
-                    </div>
-                    <div class="right_blog">
-                        <img src="assets/images/img_blog_1.png" alt="#">
-                    </div>
-                </div>
-                <div class="blog_box">
-                    <div class="left_blog">
-                        <p class="info_text_blog">Описание проделанной работы</p>
-                    </div>
-                    <div class="right_blog">
-                        <img src="assets/images/img_blog_2.png" alt="#">
-                    </div>
-                </div>
-                <div class="blog_box">
-                    <div class="left_blog">
-                        <p class="info_text_blog">Описание проделанной работы</p>
-                    </div>
-                    <div class="right_blog">
-                        <img src="assets/images/img_blog_3.png" alt="#">
-                    </div>
-                </div>
-                <div class="blog_box">
-                    <div class="left_blog">
-                        <p class="info_text_blog">Описание проделанной работы</p>
-                    </div>
-                    <div class="right_blog">
-                        <img src="assets/images/img_blog_4.png" alt="#">
-                    </div>
-                </div>
-                <div class="blog_box">
-                    <div class="left_blog">
-                        <p class="info_text_blog">Описание проделанной работы</p>
-                    </div>
-                    <div class="right_blog">
-                        <img src="assets/images/img_blog_5.png" alt="#">
-                    </div>
-                </div>
+                <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                    <article>
+                        <div class="btn_clic">
+                            <a href="<?php the_field('vstav_ssylku_na_sajt'); ?>">Перейти на сайт</a>
+                        </div>
+                        <div class="article_text">
+
+                            <?php
+                            the_content(); ?>
+                        </div>
+                    </article>
+                <?php endwhile; ?>
+                <?php endif; ?>
             </div>
             <div class="btn_clic order">
                 <a class="popup-btn" href="#">Заказать такой сайт</a>

@@ -12,27 +12,31 @@ get_header();
             </div>
             <p class="info_project_text">Кликните на блок, чтобы посмотреть подробности. Для вашего удобства, работы разбиты на категории.</p>
             <div class="projects">
-                <div class="project animated fadeInLeft">
-                    <a href="project-single.html">
-							<span class="overlay">
-								<i class="fas fa-link"></i>
-							</span>
-                        <div class="img_box">
-                            <img src="assets/images/img_project.png" alt="#">
-                        </div>
-                        <div class="info_box">
-                            <span class="title_site">
-                                <?php the_terms( get_the_ID(), 'works', '', '', ''); ?>
-
-
-
+                <?php
+                $categories = get_categories(array(
+                    'taxonomy'  => 'work',
+                    'orderby'   => 'name',
+                    'order'     => 'ASC'
+                ));
+                foreach( $categories as $category ){ ?>
+                    <div class="project animated fadeInUp">
+                        <a href="<?php echo get_category_link( $category->term_id ); ?>">
+                                <span class="overlay">
+                                    <i class="fas fa-link"></i>
                                 </span>
-                            <span class="text_site">Посадочная страница для сбора контактов посетителей или продажи товара.</span>
-                        </div>
-                    </a>
-                </div>
+                            <div class="img_box">
+                                <?php $cat_image = get_field('выберите_картинку', $category); ?>
+                                <img src="<?php echo $cat_image; ?>" alt="#" >
 
+                            </div>
+                            <div class="info_box">
+                                <?php echo '<span class="title_site"> '. $category->name . '</span>'; ?>
+                                <?php echo '<span class="text_site"> '. $category->description . '</span>' ?>
+                            </div>
+                        </a>
+                    </div>
 
+              <?php  } ?>
             </div>
         </div>
     </div>

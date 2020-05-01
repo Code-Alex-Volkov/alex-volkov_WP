@@ -13,8 +13,16 @@ get_header();
                 <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' » '); ?>
             </div>
             <div class="post_box">
-                <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-                    <article>
+                <?php // параметры по умолчанию
+                $posts = get_posts( array(
+                    'numberposts' => 0,
+                    'category'    => 0,
+                    'post_type'   => 'post',
+                ) );
+
+                foreach( $posts as $post ){
+                    setup_postdata($post);?>
+                     <article>
                         <div class="img_post">
                             <a href="<?php the_permalink() ?>">
                                 <?php the_post_thumbnail('post_thumb'); ?>
@@ -29,13 +37,16 @@ get_header();
                             <?php the_author_posts_link() ?>
                         </div>
                     </article>
+                    <?php
+                    the_posts_pagination([
+                        'prev_text' => __('<i class="fa fa-angle-left"></i>'),
+                        'next_text' => __('<i class="fa fa-angle-right"></i>'),
+                    ]);
+              }
 
-                <?php endwhile; ?>
-                    <?php the_posts_pagination([
-                        'prev_text'    => __('<i class="fa fa-angle-left"></i>'),
-                        'next_text'    => __('<i class="fa fa-angle-right"></i>'),
-                    ]); ?>
-                <?php endif; ?>
+                wp_reset_postdata(); // сброс ?>
+
+
             </div>
 
         </div>

@@ -3,7 +3,7 @@
     <div class="blog_container">
         <div class="wrapper">
             <div class="blog_title">
-                <h1 class="title">Блог1</h1>
+                <h1 class="title"></h1>
                 <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' » '); ?>
             </div>
             <div class="post_single_box">

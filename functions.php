@@ -59,8 +59,8 @@ function theme_register_nav_menu() {
         // Параметры по умолчанию
         static $args = array(
             'on_front_page' => true,  // выводить крошки на главной странице
-            'show_post_title' => false,  // показывать ли название записи в конце (последний элемент). Для записей, страниц, вложений
-            'show_term_title' => false,  // показывать ли название элемента таксономии в конце (последний элемент). Для меток, рубрик и других такс
+            'show_post_title' => true,  // показывать ли название записи в конце (последний элемент). Для записей, страниц, вложений
+            'show_term_title' => true,  // показывать ли название элемента таксономии в конце (последний элемент). Для меток, рубрик и других такс
             'title_patt' => '<span class="kb_title">%s</span>', // шаблон для последнего заголовка. Если включено: show_post_title или show_term_title
             'last_sep' => false,  // показывать последний разделитель, когда заголовок в конце не отображается
             'markup' => 'schema.org', // 'markup' - микроразметка. Может быть: 'rdf.data-vocabulary.org', 'schema.org', '' - без микроразметки
@@ -298,27 +298,7 @@ function theme_register_nav_menu() {
                 }
             }
 
-            // замена ссылки на архивную страницу для типа записи
-            $home_after = apply_filters('kama_breadcrumbs_home_after', '', $linkpatt, $sep, $ptype);
 
-            if ('' === $home_after) {
-                // Ссылка на архивную страницу типа записи для: отдельных страниц этого типа; архивов этого типа; таксономий связанных с этим типом.
-                if ($ptype && $ptype->has_archive && !in_array($ptype->name, array('post', 'page', 'attachment'))
-                    && (is_post_type_archive() || is_singular() || (is_tax() && in_array($term->taxonomy, $ptype->taxonomies)))
-                ) {
-                    $pt_title = $ptype->labels->name;
-
-                    // первая страница архива типа записи
-                    if (is_post_type_archive() && !$paged_num)
-                        $home_after = sprintf($this->arg->title_patt, $pt_title);
-                    // singular, paged post_type_archive, tax
-                    else {
-                        $home_after = sprintf($linkpatt, get_post_type_archive_link($ptype->name), $pt_title);
-
-                        $home_after .= (($paged_num && !is_tax()) ? $pg_end : $sep); // пагинация
-                    }
-                }
-            }
 
             $before_out = sprintf($linkpatt, home_url(), $loc->home) . ($home_after ? $sep . $home_after : ($out ? $sep : ''));
 

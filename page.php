@@ -2,7 +2,7 @@
     <div class="blog_container">
         <div class="wrapper">
             <div class="blog_title">
-                <h1 class="title">Блог</h1>
+                <h1 class="title"><?php wp_title(''); ?></h1>
                 <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' » '); ?>
             </div>
             <div class="post_box">
