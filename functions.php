@@ -4,6 +4,24 @@ add_action( 'after_setup_theme', 'theme_register_nav_menu');
 add_action( 'wp_enqueue_scripts', 'theme_style' );
 add_action( 'wp_footer', 'theme_scripts' );
 
+function theme_style() {
+    wp_enqueue_style( 'style', get_stylesheet_directory_uri());
+    wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/styles/main.min.css' );
+    wp_enqueue_style( 'main_style', get_template_directory_uri() . '/assets/styles/main_style.css' );
+}
+function theme_scripts() {
+    wp_enqueue_script( 'vendor', get_template_directory_uri() . '/assets/scripts/vendors.bundle.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'works', get_template_directory_uri() . '/assets/scripts/works.bundle.js', array(), '1.0.0', true );
+}
+
+add_action( 'template_redirect', function(){
+    ob_start( function( $buffer ){
+        $buffer = str_replace( array( 'type="text/javascript"', "type='text/javascript'" ), '', $buffer );
+        $buffer = str_replace( array( 'type="text/css"', "type='text/css'" ), '', $buffer );
+        return $buffer;
+    });
+});
+
 function theme_register_nav_menu() {
     register_nav_menu('Menu', 'Меню сайта');
     add_theme_support('title-tag');
@@ -440,17 +458,6 @@ function create_taxonomy(){
         'hierarchical'          => true,
 
     ] );
-}
-
-
-
-function theme_style() {
-    wp_enqueue_style( 'style', get_stylesheet_directory_uri());
-    wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/styles/main.min.css' );
-}
-function theme_scripts() {
-    wp_enqueue_script( 'vendor', get_template_directory_uri() . '/assets/scripts/vendors.bundle.js', array(), '1.0.0', true );
-    wp_enqueue_script( 'works', get_template_directory_uri() . '/assets/scripts/works.bundle.js', array(), '1.0.0', true );
 }
 
 

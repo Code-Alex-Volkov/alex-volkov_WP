@@ -5,8 +5,7 @@
         <div class="wrapper">
             <div class="project_blog_title">
                 <div class="title_blog"><?php the_title() ?></div>
-
-                <span><?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' » '); ?></span>
+                <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' <i class="fas fa-angle-right"></i> '); ?>
             </div>
 
             <div class="block_blog">
@@ -18,8 +17,7 @@
                         </div>
                         <div class="article_text">
 
-                            <?php
-                            the_content(); ?>
+                            <?php the_content(); ?>
                         </div>
                     </article>
                 <?php endwhile; ?>

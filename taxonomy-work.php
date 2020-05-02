@@ -3,7 +3,8 @@
 <div class="project_single">
     <div class="wrapper">
         <div class="project_single_title">
-            <span><?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' » '); ?></span>
+            <div></div>
+            <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' <i class="fas fa-angle-right"></i> '); ?>
         </div>
         <div class="block_single">
             <div class="left_single">

@@ -11,7 +11,7 @@ get_header();
             <h1 class="title animated fadeInDown"><?php the_field('заголовок_главной_страницы'); ?></h1>
             <h2 class="sub_title animated fadeInUp"><?php the_field('подзаголовок_главной_страницы'); ?></h2>
             <div class="btn_clic animated fadeInUp">
-                <a href="project.html">Посмотреть портфолио</a>
+                <a href="http://alex-volkov.loc/moi-proekty/">Посмотреть портфолио</a>
             </div>
         </div>
     </div>

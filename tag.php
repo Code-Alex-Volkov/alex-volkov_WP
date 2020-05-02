@@ -1,47 +1,62 @@
 <?php get_header(); ?>
-<?php get_template_part('partials/page_heading');
 
-//Sidebar position based on theme options
-$ale_sidebar_position = ale_get_option('blog_sidebar_position');
-$sidebar_class = '';
-
-if($ale_sidebar_position){
-    $sidebar_class = 'sidebar_position_'. $ale_sidebar_position;
-}
-?>
-
-    <div class="content_wrapper blog_posts flex_container <?php  echo esc_attr($sidebar_class); ?> cf">
-
-        <?php if($ale_sidebar_position  !== 'no'){
-            get_sidebar();
-        } ?>
-        <!-- Content -->
-        <div class="story ale_blog_archive content cf">
-            <?php
-            //Columns Settings
-            $ale_blog_columns = ale_get_option('default_blog_columns');
-            $ale_columns_class = '';
-            if($ale_blog_columns){
-                $ale_columns_class = 'ale_blog_columns_'.$ale_blog_columns;
-            }
-            //Text Align Settings
-            $ale_blog_text_align = ale_get_option('default_blog_text_align');
-            $ale_text_align_class = '';
-            if($ale_blog_text_align){
-                $ale_text_align_class = 'ale_blog_text_align_'.$ale_blog_text_align;
-            }
-            ?>
-            <div class="grid <?php echo esc_attr($ale_columns_class)." ".esc_attr($ale_text_align_class); ?>">
-                <div class="grid-sizer"></div>
-                <div class="gutter-sizer"></div>
-                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                    <?php get_template_part('partials/postpreview' );?>
-                <?php endwhile; else: ?>
-                    <?php get_template_part('partials/notfound')?>
-                <?php endif; ?>
+    <div class="blog_container">
+        <div class="wrapper">
+            <div class="blog_title">
+                <div class="title"><?php echo get_queried_object()->name; ?></div>
+                <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' <i class="fas fa-angle-right"></i> '); ?>
             </div>
-            <?php get_template_part('partials/pagination'); ?>
-        </div>
+            <div class="blog_box_container">
+                <div class="post_box">
+                    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                        <article>
+                            <div>
+                                <div class="img_post">
+                                    <a href="<?php the_permalink() ?>">
+                                        <?php the_post_thumbnail('post_thumb'); ?>
+                                    </a>
+                                </div>
+                                <h2 class="title_post"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
+                                <div class="data_post"><?php the_time('F jS, Y') ?></div>
+                                <div class="article_text">
+                                    <p><?php the_excerpt(); ?></p>
+                                </div>
+                            </div>
+                            <div class="meta">
+                                <div class="author">Автор: <?php the_author_posts_link() ?></div>
+                                <div class="tags"><?php the_tags('', ''); ?></div>
+                            </div>
+                        </article>
 
+                    <?php endwhile; ?>
+                        <?php the_posts_pagination([
+                            'prev_text'    => __('<i class="fa fa-angle-left"></i>'),
+                            'next_text'    => __('<i class="fa fa-angle-right"></i>'),
+                        ]); ?>
+                    <?php endif; ?>
+
+                </div>
+                <div class="sidebar_box">
+                    <?php
+                    $tags = get_categories(array(
+                        'taxonomy'  => 'post_tag',
+                        'orderby'   => 'name',
+                        'order'     => 'ASC'
+                    ));?>
+                    <div class="tags_link">
+                        <div class="title_tags">Метки</div>
+                        <div class="tags_box_sidebar">
+                            <?php foreach( $tags as $tag ){ ?>
+                                <div class="post_tags_link">
+                                    <a href="<?php echo get_category_link( $tag->term_id ); ?>"><?php echo $tag->name; ?> </a>
+                                </div>
+                            <?php  } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-<?php get_footer(); ?>
+
+<?php get_footer('template'); ?>
